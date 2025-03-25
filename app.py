@@ -19,6 +19,7 @@ def upload_image():
         # Изменение размера изображения
         img = Image.open(filepath)
         img = img.resize((200, 200))
+        img = img.convert('L')  # Преобразование в чёрно-белое
         img.save(filepath)
         return render_template('result.html', filename=file.filename)
     return render_template('upload.html')
